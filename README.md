@@ -1,6 +1,11 @@
 # World of Tanks - BRR mod (Battle Results Retriever)
 
-Originally made by Phalynx (vBAddict), rewritten by KI Hestad ([WotNumbers](https://wotnumbers.com))
+Originally made by Phalynx (vBAddict) back in the good old days....
+
+Rewritten and maintained by:
+
+* Author: KI Hestad (aka BadButton)
+* Website: https://wotnumbers.com
 
 ## Description
 
