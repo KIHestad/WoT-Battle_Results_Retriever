@@ -22,8 +22,10 @@ This file is added to help developers
 * Compile with: python -c "import mod_BRR;
 
   * Expected result:
+    ```
     Traceback (most recent call last):
       File "<string>", line 1, in <module>
       File "mod_BRR.py", line 1, in <module>
         import BigWorld
     ImportError: No module named BigWorld
+* mod_BRR.pyc will still be generated.
