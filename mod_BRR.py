@@ -10,6 +10,7 @@ import os
 import traceback
 import zlib
 
+from Account import Account
 from account_helpers import BattleResultsCache
 from battle_results_shared import *
 from debug_utils import *
@@ -18,13 +19,15 @@ from urlparse import urlparse
 from gui.shared.utils.requesters import StatsRequester
 from messenger.proto.bw import ServiceChannelManager
 from functools import partial
+from gui import SystemMessages
 from gui import ClientHangarSpace
 from gui import hangar_vehicle_appearance
 from PlayerEvents import g_playerEvents
-LOG_NOTE('Battle Result Retriever Mod (BRR) for WoT 1.0 is made by the Wot Numbers Team (http://wotnumbers.com)')
+logMessage = 'Battle Result Retriever Mod (BRR) for WoT 1.0 is made by the Wot Numbers Team (http://wotnumbers.com)'
+LOG_NOTE(logMessage)
 LOG_NOTE('BRR initializing')
 BATTLE_RESULTS_VERSION = 1
-CACHE_DIR = os.path.join(os.path.dirname(unicode(BigWorld.wg_getPreferencesFilePath(), 'utf-8', errors='ignore')), 'battle_results')
+CACHE_DIR = os.path.join(os.path.dirname(BigWorld.wg_getPreferencesFilePath()), 'battle_results')
 todolist = []
 
 def fetchresult(arenaUniqueID):
@@ -191,7 +194,15 @@ def custom_setup(self, buildIdx):
     default_setup(self, buildIdx)
 
 
+def showWelcomeMessage(self):
+	parent(self)
+	SystemMessages.pushMessage(logMessage, type=SystemMessages.SM_TYPE.Warning)
+	Account.onBecomePlayer = parent
+
+
 LOG_NOTE('BRR installing')
 ServiceChannelManager._ServiceChannelManager__addServerMessage = custom_msg
 hangar_vehicle_appearance.HangarVehicleAppearance._HangarVehicleAppearance__doFinalSetup = custom_setup
+parent = Account.onBecomePlayer
+Account.onBecomePlayer = showWelcomeMessage
 LOG_NOTE('BRR loaded')
