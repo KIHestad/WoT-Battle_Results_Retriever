@@ -19,7 +19,7 @@ This file is added to help developers
 * Decompile relevant files from the temporary folder using uncompyle6 from command line
   * ex: uncompyle6 -o .\AccountCommands.py .\AccountCommands.pyc
 * Add the decompiled py-files to the same folder as the mod
-* Compile with: python -c "import mod_BRR;
+* Compile with: python -c "import mod_BRR;"
 
   * Expected result:
     ```
