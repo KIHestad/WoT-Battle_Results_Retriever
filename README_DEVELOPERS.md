@@ -19,3 +19,11 @@ This file is added to help developers
 * Decompile relevant files from the temporary folder using uncompyle6 from command line
   * ex: uncompyle6 -o .\AccountCommands.py .\AccountCommands.pyc
 * Add the decompiled py-files to the same folder as the mod
+* Compile with: python -c "import mod_BRR;
+
+  * Expected result:
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+      File "mod_BRR.py", line 1, in <module>
+        import BigWorld
+    ImportError: No module named BigWorld
